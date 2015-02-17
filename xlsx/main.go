@@ -12,6 +12,7 @@ func main() {
 	var sheet *xlsx.Sheet
 	var row *xlsx.Row
 	var cell *xlsx.Cell
+	var err error
 
 	file = xlsx.NewFile()
 	sheet = file.AddSheet("Sheet1")
@@ -25,5 +26,10 @@ func main() {
 				fmt.Printf("%s\n", tempCell.String())
 			}
 		}
+	}
+
+	err = file.Save("FirstExcel.xlsx")
+	if err != nil {
+		fmt.Printf(err.Error())
 	}
 }
